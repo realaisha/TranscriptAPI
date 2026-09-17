@@ -32,8 +32,12 @@ app.UseCors("ReactApp");
 app.MapGet("/students/search", (string matricNumber, TranscriptService service) =>
 {
     Console.WriteLine($"Searching for: [{matricNumber}]");
-    var student = service.GetByMatricNumber(matricNumber);
-    return student is not null ? Results.Ok(student) : Results.NotFound();
+
+    var transcript = service.GetTranscriptByMatricNumber(matricNumber);
+
+    return transcript is not null
+        ? Results.Ok(transcript)
+        : Results.NotFound();
 });
 
 app.MapGet("/students", (TranscriptService service) => service.GetAll());

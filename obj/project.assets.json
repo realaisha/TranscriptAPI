@@ -374,11 +374,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/l2e/dotnet/TranscriptAPI/TranscriptAPI.csproj",
+      "projectUniqueName": "/home/l2e/Desktop/TranscriptDigitizationProject/TranscriptAPI/TranscriptAPI.csproj",
       "projectName": "TranscriptAPI",
-      "projectPath": "/home/l2e/dotnet/TranscriptAPI/TranscriptAPI.csproj",
+      "projectPath": "/home/l2e/Desktop/TranscriptDigitizationProject/TranscriptAPI/TranscriptAPI.csproj",
       "packagesPath": "/home/l2e/.nuget/packages/",
-      "outputPath": "/home/l2e/dotnet/TranscriptAPI/obj/",
+      "outputPath": "/home/l2e/Desktop/TranscriptDigitizationProject/TranscriptAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/l2e/.nuget/NuGet/NuGet.Config"

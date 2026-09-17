@@ -8,4 +8,6 @@ public class CourseResult
     public string CreditUnit { get; set; } = "";
     public string Score { get; set; } = "";
     public string Grade { get; set; } = "";
+    public string Level { get; set; } = "";
+    public string Session { get; set; } = "";
 }

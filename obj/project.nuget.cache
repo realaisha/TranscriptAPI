@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uBcpIdyYi6o=",
+  "dgSpecHash": "yMWimxvHOpM=",
   "success": true,
-  "projectFilePath": "/home/l2e/dotnet/TranscriptAPI/TranscriptAPI.csproj",
+  "projectFilePath": "/home/l2e/Desktop/TranscriptDigitizationProject/TranscriptAPI/TranscriptAPI.csproj",
   "expectedPackageFiles": [
     "/home/l2e/.nuget/packages/closedxml/0.105.1/closedxml.0.105.1.nupkg.sha512",
     "/home/l2e/.nuget/packages/closedxml.parser/2.0.0/closedxml.parser.2.0.0.nupkg.sha512",

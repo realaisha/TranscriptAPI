@@ -11,4 +11,5 @@ public class Student
     public string Programme { get; set; } = "";
     public string ModeOfEntry { get; set; } = "";
     public string YearOfEntry { get; set; } = "";
+    public List<CourseResult> Courses { get; set; } = new();
 }

@@ -6,6 +6,7 @@ using TranscriptAPI.Models;
 public class TranscriptService
 {
     private readonly Dictionary<string, Student> _students = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, Transcript> _transcripts = new(StringComparer.OrdinalIgnoreCase);
     private readonly string _filePath;
 
     public TranscriptService(IWebHostEnvironment env)
@@ -53,7 +54,6 @@ public class TranscriptService
 
             string courseCode = worksheet.Cell(row, 10).Value.ToString();
             if (string.IsNullOrWhiteSpace(courseCode)) continue;
-
             currentStudent.Courses.Add(new CourseResult
             {
                 CourseCode = courseCode,
@@ -66,16 +66,70 @@ public class TranscriptService
                 Session = worksheet.Cell(row, 17).Value.ToString()
             });
         }
+
+        var degreeworksheet = workbook.Worksheet("Class of Degree");
+        var degreelastUsedRow = degreeworksheet.LastRowUsed();
+
+        if (degreelastUsedRow == null)
+        {
+            return;
+        }
+
+        int degreelastRow = degreelastUsedRow.RowNumber();
+
+        for (int row = 3; row <= degreelastRow; row++)
+        {
+            string matricNo = degreeworksheet.Cell(row, 2).Value.ToString().Trim();
+
+            if (string.IsNullOrWhiteSpace(matricNo))
+            {
+                continue;
+            }
+
+            var transcript = new Transcript
+                {
+                    TotalCreditsOffered = degreeworksheet.Cell(row, 3).GetValue<int>(),
+                    TotalCreditsPassed = degreeworksheet.Cell(row, 4).GetValue<int>(),
+                    TotalWeightedGradePoints = degreeworksheet.Cell(row, 5).GetValue<double>(),
+                    CGPA = degreeworksheet.Cell(row, 6).GetValue<double>(),
+                    DegreeAwarded = degreeworksheet.Cell(row, 7).Value.ToString(),
+                    ClassOfDegree = degreeworksheet.Cell(row, 8).Value.ToString(),
+                
+                };
+                _transcripts[matricNo] = transcript;
+            }
+
+
     }
 
     public Student? GetByMatricNumber(string matricNumber) =>
         _students.TryGetValue(matricNumber.Trim(), out var student) ? student : null;
 
-    public IReadOnlyCollection<Student> GetAll() => _students.Values;
+    public Transcript? GetTranscriptByMatricNumber(string matricNumber)
+{
+    matricNumber = matricNumber.Trim();
 
-    public void Reload() // useful if the Excel file changes and you need to refresh without restarting
+    if (!_students.TryGetValue(matricNumber, out var student))
     {
-        _students.Clear();
-        Load();
+        return null;
     }
+
+    if (!_transcripts.TryGetValue(matricNumber, out var transcript))
+    {
+        return null;
+    }
+
+    transcript.Student = student;
+
+    return transcript;
+}
+
+public IReadOnlyCollection<Student> GetAll() => _students.Values;
+
+public void Reload()
+{
+    _students.Clear();
+    _transcripts.Clear();
+    Load();
+}
 }

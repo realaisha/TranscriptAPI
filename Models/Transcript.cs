@@ -4,8 +4,6 @@ public class Transcript
 {
     public Student Student { get; set; } = new();
 
-    public List<AcademicSession> Sessions { get; set; } = new();
-
     public double CGPA { get; set; }
 
     public string DegreeAwarded { get; set; } = "";

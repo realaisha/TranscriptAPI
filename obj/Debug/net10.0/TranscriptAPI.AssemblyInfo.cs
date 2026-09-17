@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TranscriptAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ae3a019484fe4f25c2ebd33d6c42ae903425833")]
 [assembly: System.Reflection.AssemblyProductAttribute("TranscriptAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TranscriptAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
